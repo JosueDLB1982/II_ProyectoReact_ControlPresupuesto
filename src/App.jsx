@@ -6,6 +6,12 @@ function App() {
   const [presupuesto, setPresupuesto] = useState(0)
   const [isValidPresupuesto, setIsValidPresupuesto] = useState(false) /* state para verificar que el presupuesto sea válido. Se inicializa en false, porque al cargar la app el presupuesto es 0, ergo no es válido */
 
+  const [modal, setModal] = useState(false) /* Controlará la ventana modal que se debe mostrar al hacer click en el ícono añadir gasto */
+
+  const handleNuevoGasto = () => {
+    setModal(true)
+  }
+
   return (
     <div>
       <Header
@@ -20,11 +26,13 @@ function App() {
         <img 
           src={IconoNuevoGasto}
           alt='Icono Nuevo Gasto'
+          onClick={handleNuevoGasto}
         />
       </div>
       )}
 
-      
+      {modal && <p>Desde Modal</p>}
+
     </div>
   )
 }
