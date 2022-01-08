@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Header from './components/Header'
 import Modal from './components/Modal'
+import { generarId } from './helpers'
 import IconoNuevoGasto from './img/nuevo-gasto.svg'
 
 function App() {
@@ -24,7 +25,13 @@ function App() {
   }
 
   const guardarGasto = gasto => { /* Esta función manejará los gastos */
-    console.log(gasto)
+    gasto.id = generarId()
+    setGastos([...gastos, gasto]) /* Hacemos una copia del arreglo gastos y le añadimos el nuevo gasto, que es el objeto que viene de <Modal/> */
+
+    setAnimarModal(false)
+    setTimeout(() => {
+      setModal(false)
+    }, 400)
   }
 
   return (

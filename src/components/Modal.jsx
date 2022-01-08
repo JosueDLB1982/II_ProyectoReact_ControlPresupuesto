@@ -10,10 +10,10 @@ const Modal = ({ setModal, animarModal, setAnimarModal, guardarGasto }) => {
     const [categoria, setCategoria] = useState('')
 
     const ocultarModal = () => { /* Se agrega este setTimeout, para que al cierre se vea transición */
+        setAnimarModal(false) /* Para que siempre se vea la animación, la devolvemos a false, cada vez que se abra se verá */
         setTimeout(() => {
             setModal(false)
         }, 400)
-        setAnimarModal(false) /* Para que siempre se vea la animación, la devolvemos a false, cada vez que se abra se verá */
     }
     const handleSubmit = e => {
         e.preventDefault()
@@ -76,7 +76,7 @@ const Modal = ({ setModal, animarModal, setAnimarModal, guardarGasto }) => {
                         <option value="ahorro">Ahorro</option>
                         <option value="comida">Comida</option>
                         <option value="casa">Casa</option>
-                        <option value="gastos">Gastos</option>
+                        <option value="gastos">Gastos Varios</option>
                         <option value="ocio">Ocio</option>
                         <option value="salud">Salud</option>
                         <option value="suscripciones">Suscripciones</option>
