@@ -8,9 +8,14 @@ function App() {
   const [isValidPresupuesto, setIsValidPresupuesto] = useState(false) /* state para verificar que el presupuesto sea válido. Se inicializa en false, porque al cargar la app el presupuesto es 0, ergo no es válido */
 
   const [modal, setModal] = useState(false) /* Controlará la ventana modal que se debe mostrar al hacer click en el ícono añadir gasto */
+  const [animarModal, setAnimarModal] = useState(false)
 
   const handleNuevoGasto = () => {
     setModal(true)
+
+    setTimeout(() => { /* Gracias a los estilos de transicion que hay en el index.css y las clases que apliquemos, aparecera una animación que mostrará el formulario en la ventana modal */
+      setAnimarModal(true) /* Pasado el tiempo indicado, cambia el valor de setAnimarModal a true */
+    }, 400)
   }
 
   return (
@@ -34,6 +39,8 @@ function App() {
 
       {modal && <Modal
         setModal={setModal}
+        animarModal={animarModal}
+        setAnimarModal={setAnimarModal}
       />}
 
     </div>
