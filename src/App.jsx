@@ -26,6 +26,7 @@ function App() {
   }
 
   const guardarGasto = gasto => { /* Esta función manejará los gastos */
+    gasto.fecha = Date.now()
     gasto.id = generarId()
     setGastos([...gastos, gasto]) /* Hacemos una copia del arreglo gastos y le añadimos el nuevo gasto, que es el objeto que viene de <Modal/> */
 
