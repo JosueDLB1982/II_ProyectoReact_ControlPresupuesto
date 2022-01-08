@@ -1,12 +1,12 @@
-import {useState} from 'react'
+import { useState } from 'react'
 import Mensaje from './Mensaje'
 
-const NuevoPresupuesto = ({presupuesto, setPresupuesto, setIsValidPresupuesto}) => {
+const NuevoPresupuesto = ({ presupuesto, setPresupuesto, setIsValidPresupuesto }) => {
     const [mensaje, setMensaje] = useState('    ')
 
     const handlePresupuesto = (e) => {
         e.preventDefault()
-        if(!presupuesto || presupuesto < 0){
+        if (!presupuesto || presupuesto < 0) {
             setMensaje('No es un presupuesto válido')
             return /* interrumpe la ejecución del if, para que sólo ejecute la primera parte, si no es válido el presupuesto. De serlo, se debe cargar el componente ControlPresupuesto */
         }
@@ -28,8 +28,8 @@ const NuevoPresupuesto = ({presupuesto, setPresupuesto, setIsValidPresupuesto}) 
                         onChange={e => setPresupuesto(Number(e.target.value))}
                     />
                 </div>
-                    <input type="submit" value='Añadir' />
-                    {mensaje && <Mensaje tipo='error'>{mensaje}</Mensaje>}
+                <input type="submit" value='Añadir' />
+                {mensaje && <Mensaje tipo='error'>{mensaje}</Mensaje>}
             </form>
         </div>
     )

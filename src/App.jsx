@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Header from './components/Header'
+import Modal from './components/Modal'
 import IconoNuevoGasto from './img/nuevo-gasto.svg'
 
 function App() {
@@ -23,15 +24,17 @@ function App() {
 
       {isValidPresupuesto && ( /* No necesito validar mas de una condición, con el && verifico si se cumple para mostar el ícono de añadir gast */
         <div className='nuevo-gasto'> {/* Con eso es suficiente */}
-        <img 
-          src={IconoNuevoGasto}
-          alt='Icono Nuevo Gasto'
-          onClick={handleNuevoGasto}
-        />
-      </div>
+          <img
+            src={IconoNuevoGasto}
+            alt='Icono Nuevo Gasto'
+            onClick={handleNuevoGasto}
+          />
+        </div>
       )}
 
-      {modal && <p>Desde Modal</p>}
+      {modal && <Modal
+        setModal={setModal}
+      />}
 
     </div>
   )
