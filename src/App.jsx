@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Header from './components/Header'
+import ListadoGastos from './components/ListadoGastos'
 import Modal from './components/Modal'
 import { generarId } from './helpers'
 import IconoNuevoGasto from './img/nuevo-gasto.svg'
@@ -44,13 +45,21 @@ function App() {
       />
 
       {isValidPresupuesto && ( /* No necesito validar mas de una condición, con el && verifico si se cumple para mostar el ícono de añadir gast */
-        <div className='nuevo-gasto'> {/* Con eso es suficiente */}
-          <img
-            src={IconoNuevoGasto}
-            alt='Icono Nuevo Gasto'
-            onClick={handleNuevoGasto}
-          />
-        </div>
+        <>
+          <main>
+            <ListadoGastos
+              gastos={gastos}
+            />
+          </main>
+
+          <div className='nuevo-gasto'> {/* Con eso es suficiente */}
+            <img
+              src={IconoNuevoGasto}
+              alt='Icono Nuevo Gasto'
+              onClick={handleNuevoGasto}
+            />
+          </div>
+        </>
       )}
 
       {modal && <Modal

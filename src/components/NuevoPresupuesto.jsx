@@ -10,7 +10,7 @@ const NuevoPresupuesto = ({ presupuesto, setPresupuesto, setIsValidPresupuesto }
             setMensaje('No es un presupuesto válido')
             setTimeout(() => {
                 setMensaje('')
-            }, 2000)
+            }, 1500)
             return /* interrumpe la ejecución del if, para que sólo ejecute la primera parte, si no es válido el presupuesto. De serlo, se debe cargar el componente ControlPresupuesto */
         }
         setMensaje('') /* No vovler a mostrar el mensaje de error, en caso de que el usuario haya cometido un error */
