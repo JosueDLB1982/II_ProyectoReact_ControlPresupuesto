@@ -37,7 +37,7 @@ function App() {
   }
 
   return (
-    <div>
+    <div className={modal && 'fijar'}> {/* Esto es con el proposito de que si hay scroll por muchos gastos, y voy a añadir otro, aparexca la ventana modal sobre todo. Si modal esta activa, aplica la clase fijar */}
       <Header
         presupuesto={presupuesto}
         setPresupuesto={setPresupuesto}
