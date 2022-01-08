@@ -1,7 +1,10 @@
 import { useState } from 'react'
+import Mensaje from './Mensaje'
 import CerrarVtn from '../img/cerrar.svg'
 
-const Modal = ({ setModal, animarModal, setAnimarModal }) => {
+const Modal = ({ setModal, animarModal, setAnimarModal, guardarGasto }) => {
+    const [mensajeValidacion, setMensajeValidacion] = useState('')
+
     const [nombre, setNombre] = useState('')
     const [cantidad, setCantidad] = useState(0)
     const [categoria, setCategoria] = useState('')
@@ -11,6 +14,19 @@ const Modal = ({ setModal, animarModal, setAnimarModal }) => {
             setModal(false)
         }, 400)
         setAnimarModal(false) /* Para que siempre se vea la animación, la devolvemos a false, cada vez que se abra se verá */
+    }
+    const handleSubmit = e => {
+        e.preventDefault()
+
+        if ([nombre, cantidad, categoria].includes('')) {
+            setMensajeValidacion('Todos los Campos son Requeridos') /* Vanmos a reutilizar el componente <Mensaje/> */
+
+            setTimeout(() => {
+                setMensajeValidacion('')
+            }, 2000)
+            return
+        }
+        guardarGasto({ nombre, cantidad, categoria }) /* Aquí se generará el objeto con las propiedades o keys de cada gasto */
     }
 
     return (
@@ -22,8 +38,11 @@ const Modal = ({ setModal, animarModal, setAnimarModal }) => {
                     onClick={ocultarModal}
                 />
             </div>
-            <form className={`formulario ${animarModal ? 'animar' : 'cerrar'}`}>
+            <form
+                onSubmit={handleSubmit}
+                className={`formulario ${animarModal ? 'animar' : 'cerrar'}`}>
                 <legend>Nuevo Gasto</legend>
+                {mensajeValidacion && <Mensaje tipo='error'>{mensajeValidacion}</Mensaje>} {/* Si mensaje tiene contenido, se cargará <Mensaje/> Mostrará el mensaje que estamos seteando en la línea 22 */}
                 <div className='campo'>
                     <label htmlFor="nombre">Nombre Gasto</label>
                     <input
@@ -53,20 +72,20 @@ const Modal = ({ setModal, animarModal, setAnimarModal }) => {
                         value={categoria}
                         onChange={e => setCategoria(e.target.value)}
                     >
-                            <option value="">-- Seleccione --</option>
-                            <option value="ahorro">Ahorro</option>
-                            <option value="comida">Comida</option>
-                            <option value="casa">Casa</option>
-                            <option value="gastos">Gastos</option>
-                            <option value="ocio">Ocio</option>
-                            <option value="salud">Salud</option>
-                            <option value="suscripciones">Suscripciones</option>
+                        <option value="">-- Seleccione --</option>
+                        <option value="ahorro">Ahorro</option>
+                        <option value="comida">Comida</option>
+                        <option value="casa">Casa</option>
+                        <option value="gastos">Gastos</option>
+                        <option value="ocio">Ocio</option>
+                        <option value="salud">Salud</option>
+                        <option value="suscripciones">Suscripciones</option>
                     </select>
                 </div>
 
                 <input
                     type="submit"
-                    value="Añadir Gasto"    
+                    value="Añadir Gasto"
                 />
             </form>
         </div>

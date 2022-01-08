@@ -10,12 +10,21 @@ function App() {
   const [modal, setModal] = useState(false) /* Controlará la ventana modal que se debe mostrar al hacer click en el ícono añadir gasto */
   const [animarModal, setAnimarModal] = useState(false)
 
+  const [gastos, setGastos] = useState([])
+
   const handleNuevoGasto = () => {
     setModal(true)
 
     setTimeout(() => { /* Gracias a los estilos de transicion que hay en el index.css y las clases que apliquemos, aparecera una animación que mostrará el formulario en la ventana modal */
       setAnimarModal(true) /* Pasado el tiempo indicado, cambia el valor de setAnimarModal a true */
     }, 400)
+
+
+
+  }
+
+  const guardarGasto = gasto => { /* Esta función manejará los gastos */
+    console.log(gasto)
   }
 
   return (
@@ -41,6 +50,7 @@ function App() {
         setModal={setModal}
         animarModal={animarModal}
         setAnimarModal={setAnimarModal}
+        guardarGasto={guardarGasto}
       />}
 
     </div>
