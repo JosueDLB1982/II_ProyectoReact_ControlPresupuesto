@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import Mensaje from './Mensaje'
 import CerrarVtn from '../img/cerrar.svg'
 
-const Modal = ({ setModal, animarModal, setAnimarModal, guardarGasto, gastoEditar }) => {
+const Modal = ({ setModal, animarModal, setAnimarModal, guardarGasto, gastoEditar, setGastoEditar }) => {
     const [mensajeValidacion, setMensajeValidacion] = useState('')
 
     const [nombre, setNombre] = useState('')
@@ -23,6 +23,7 @@ const Modal = ({ setModal, animarModal, setAnimarModal, guardarGasto, gastoEdita
 
     const ocultarModal = () => { /* Se agrega este setTimeout, para que al cierre se vea transición */
         setAnimarModal(false) /* Para que siempre se vea la animación, la devolvemos a false, cada vez que se abra se verá */
+        setGastoEditar({}) /* Al cerrar la ventana modal el state de editar gasto se borrará */
         setTimeout(() => {
             setModal(false)
         }, 400)

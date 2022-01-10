@@ -38,6 +38,7 @@ function App() {
     if(gasto.id) {
       const gastoActualizado = gastos.map(gastoState => gastoState.id === gasto.id ? gasto : gastoState) /* Si los id son iguales es una edicion y retorna gasto que es el objeto actualizado, caso contrario es un registro nuevo, retorna gastoState que es la informacion del state */
       setGastos(gastoActualizado)
+      setGastoEditar({}) /* Luego de editar un gasto devuelve el state a vacío */
     } else {
       gasto.fecha = Date.now()
       gasto.id = generarId()
@@ -91,6 +92,7 @@ function App() {
         setAnimarModal={setAnimarModal}
         guardarGasto={guardarGasto}
         gastoEditar={gastoEditar}
+        setGastoEditar={setGastoEditar}
       />}
 
     </div>
