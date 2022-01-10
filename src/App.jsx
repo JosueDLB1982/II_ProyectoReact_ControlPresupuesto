@@ -6,10 +6,12 @@ import { generarId } from './helpers'
 import IconoNuevoGasto from './img/nuevo-gasto.svg'
 
 function App() {
-  const [gastos, setGastos] = useState([])
+  const [gastos, setGastos] = useState(
+    localStorage.getItem('gastos') ? JSON.parse(localStorage.getItem('gastos')) : [] /* Busca el LS en el arreglo gastos, si lo encuentra, los convierte los datos string a arreglo mediante JSON.parse y los carga, de no encontrar nada, carga un arreglo vacío */
+  )
 
   const [presupuesto, setPresupuesto] = useState(
-    Number(localStorage.getItem('presupuesto')) ?? 0
+    Number(localStorage.getItem('presupuesto')) ?? 0 /* Para guardar el presupuesto en LS */
   )
 
   const [isValidPresupuesto, setIsValidPresupuesto] = useState(false) /* state para verificar que el presupuesto sea válido. Se inicializa en false, porque al cargar la app el presupuesto es 0, ergo no es válido */
@@ -31,6 +33,10 @@ function App() {
   useEffect(() => {
     localStorage.setItem('presupuesto', presupuesto ?? 0)
   }, [presupuesto])
+
+  useEffect(() => {
+    localStorage.setItem('gastos', JSON.stringify(gastos) ?? []) /* Los gastos son un arreglo, pero en LS sólo se pueden guardar string, por eso */
+  }, [gastos]) /* hay que convertir el arreglo a string con JSON.stringify. Si no hay nada le asignamos un arreglo vacío */
 
   useEffect(() => {
     const presupuestoLS = Number(localStorage.getItem('presupuesto')) ?? 0 /* Buscará un presupuesto en local storage, si lo consigue, asigna ese, de no conseguirlo, le asigna 0 */
