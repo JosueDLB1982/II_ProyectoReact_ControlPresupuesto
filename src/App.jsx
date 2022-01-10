@@ -24,6 +24,8 @@ function App() {
 
   const [filtro, setFiltro] = useState('')
 
+  const [gastosFiltrados, setGastosFiltrados] = useState([]) /* state dedicado a almcenar el resultado de los filtros */
+
   useEffect(() => {
     if (Object.keys(gastoEditar).length > 0) { /* Si hay algo en editar gasto abre la ventana modal con el formulario */
       setModal(true)
@@ -43,7 +45,8 @@ function App() {
 
   useEffect(() => { /* state dependiente de Filtro, sabrá cuál es la categoría seleccionada */
     if(filtro) {
-      
+      const gastosFiltrados = gastos.filter(gasto => gasto.categoria === filtro)
+      setGastosFiltrados(gastosFiltrados)
     }
   }, [filtro])
 
