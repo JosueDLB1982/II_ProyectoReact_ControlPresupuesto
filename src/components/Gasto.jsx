@@ -11,7 +11,7 @@ const diccionarioIconos = {
     ahorro: IconoAhorro,
     casa: IconoCasa,
     comida: IconoComida,
-    gastos_varios: IconoGastos,
+    varios: IconoGastos,
     ocio: IconoOcio,
     salud: IconoSalud,
     suscripciones: IconoSuscripciones
@@ -27,7 +27,7 @@ const Gasto = ({ gasto }) => {
                     alt="Icono Gasto"
                 />
                 <div className="descripcion-gasto">
-                    <p className="categoria">{categoria}</p>
+                    <p className="categoria">{categoria === "varios" ? "Gastos Varios" : categoria}</p> {/* Cuando la categoría sea varios, muestra gastos varios, de resto, muestra categoría */}
                     <p className="nombre-gasto">{nombre}</p>
                     <p className="fecha-gasto">
                         Agregado el: {' '}

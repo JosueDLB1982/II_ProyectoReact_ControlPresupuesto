@@ -1,4 +1,15 @@
-const ControlPresupuesto = ({ presupuesto }) => {
+import { useState, useEffect } from "react"
+
+const ControlPresupuesto = ({ gastos, presupuesto }) => {
+    const [disponible, setDisponible] = useState(0)
+    const [gastado, setGastado] = useState(0)
+
+    useEffect(() => {
+       const totalGastado = gastos.reduce((total, gasto) => gasto.cantidad + total, 0) /* al total le irá sumando cada gasto individual, eso me dará el total de gastos */
+        console.log(totalGastado)
+        setGastado(totalGastado)
+    }, [gastos])
+
     const formatearCantidad = (cantidad) => {
         return cantidad.toLocaleString('en-US', {
             style: 'currency',
@@ -18,11 +29,11 @@ const ControlPresupuesto = ({ presupuesto }) => {
                 </p>
 
                 <p>
-                    <span>Disponible: </span>{formatearCantidad(0)} {/* Colocamos valor estático 0, sólo para ir construyendo el componente */}
+                    <span>Disponible: </span>{formatearCantidad(disponible)} {/* controlado por el state disponible, muestra el dinero del presupuesto*/}
                 </p>
 
                 <p>
-                    <span>Gastado: </span>{formatearCantidad(0)} {/* Luego que se creen las funciones, se añade el valor dinámico */}
+                    <span>Gastado: </span>{formatearCantidad(gastado)} {/* controlado por el state gastado muestra el total de gastos */}
                 </p>
             </div>
         </div>

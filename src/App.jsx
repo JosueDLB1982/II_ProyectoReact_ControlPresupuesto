@@ -6,13 +6,13 @@ import { generarId } from './helpers'
 import IconoNuevoGasto from './img/nuevo-gasto.svg'
 
 function App() {
+  const [gastos, setGastos] = useState([])
   const [presupuesto, setPresupuesto] = useState(0)
   const [isValidPresupuesto, setIsValidPresupuesto] = useState(false) /* state para verificar que el presupuesto sea válido. Se inicializa en false, porque al cargar la app el presupuesto es 0, ergo no es válido */
 
   const [modal, setModal] = useState(false) /* Controlará la ventana modal que se debe mostrar al hacer click en el ícono añadir gasto */
   const [animarModal, setAnimarModal] = useState(false)
 
-  const [gastos, setGastos] = useState([])
 
   const handleNuevoGasto = () => {
     setModal(true)
@@ -26,6 +26,7 @@ function App() {
   }
 
   const guardarGasto = gasto => { /* Esta función manejará los gastos */
+    
     gasto.fecha = Date.now()
     gasto.id = generarId()
     setGastos([...gastos, gasto]) /* Hacemos una copia del arreglo gastos y le añadimos el nuevo gasto, que es el objeto que viene de <Modal/> */
@@ -37,8 +38,9 @@ function App() {
   }
 
   return (
-    <div className={modal && 'fijar'}> {/* Esto es con el proposito de que si hay scroll por muchos gastos, y voy a añadir otro, aparexca la ventana modal sobre todo. Si modal esta activa, aplica la clase fijar */}
+    <div className={modal ? 'fijar' : ''}> {/* Esto es con el proposito de que si hay scroll por muchos gastos, y voy a añadir otro, aparexca la ventana modal sobre todo. Si modal esta activa, aplica la clase fijar */}
       <Header
+        gastos={gastos}
         presupuesto={presupuesto}
         setPresupuesto={setPresupuesto}
         isValidPresupuesto={isValidPresupuesto}

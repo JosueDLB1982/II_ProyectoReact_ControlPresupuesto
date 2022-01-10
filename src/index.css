@@ -56,6 +56,15 @@ header h1 {
     text-transform: uppercase;
 }
 
+header h3 {
+    padding: 1rem 0;
+    margin: 3;
+    color: #969393;
+    text-align: center;
+
+    /* text-transform: uppercase; */
+}
+
 .formulario {
     width: 95%;
     margin: 0 auto;

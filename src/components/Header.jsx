@@ -2,13 +2,15 @@ import React from 'react'
 import NuevoPresupuesto from './NuevoPresupuesto'
 import ControlPresupuesto from './ControlPresupuesto'
 
-const Header = ({ presupuesto, setPresupuesto, isValidPresupuesto, setIsValidPresupuesto }) => {
+const Header = ({ presupuesto, setPresupuesto, isValidPresupuesto, setIsValidPresupuesto, gastos }) => {
     return (
         <header>
             <h1>Planificador de Gastos</h1>
+            <h3>Josue Lopez Developer Treinee</h3>
 
             {isValidPresupuesto ? ( /* Ternario que me permitirá validar si el presupuesto es válido. Al no serlo, muestra el mensaje de error en la misma pantalla componente, de ser válido, cargará el componente ControlPresupuesto */
                 <ControlPresupuesto
+                    gastos={gastos}
                     presupuesto={presupuesto}
                 />
             ) : (
