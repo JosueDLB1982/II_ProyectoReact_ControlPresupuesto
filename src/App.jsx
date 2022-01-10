@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import Header from './components/Header'
+import Filtro from './components/Filtro'
 import ListadoGastos from './components/ListadoGastos'
 import Modal from './components/Modal'
 import { generarId } from './helpers'
@@ -21,6 +22,8 @@ function App() {
 
   const [gastoEditar, setGastoEditar] = useState({})
 
+  const [filtro, setFiltro] = useState('')
+
   useEffect(() => {
     if (Object.keys(gastoEditar).length > 0) { /* Si hay algo en editar gasto abre la ventana modal con el formulario */
       setModal(true)
@@ -37,6 +40,12 @@ function App() {
   useEffect(() => {
     localStorage.setItem('gastos', JSON.stringify(gastos) ?? []) /* Los gastos son un arreglo, pero en LS sólo se pueden guardar string, por eso */
   }, [gastos]) /* hay que convertir el arreglo a string con JSON.stringify. Si no hay nada le asignamos un arreglo vacío */
+
+  useEffect(() => { /* state dependiente de Filtro, sabrá cuál es la categoría seleccionada */
+    if(filtro) {
+      
+    }
+  }, [filtro])
 
   useEffect(() => {
     const presupuestoLS = Number(localStorage.getItem('presupuesto')) ?? 0 /* Buscará un presupuesto en local storage, si lo consigue, asigna ese, de no conseguirlo, le asigna 0 */
@@ -90,6 +99,10 @@ function App() {
       {isValidPresupuesto && ( /* No necesito validar mas de una condición, con el && verifico si se cumple para mostar el ícono de añadir gast */
         <>
           <main>
+            <Filtro
+              filtro={filtro}
+              setFiltro={setFiltro}
+            />
             <ListadoGastos
               gastos={gastos}
               setGastoEditar={setGastoEditar}
