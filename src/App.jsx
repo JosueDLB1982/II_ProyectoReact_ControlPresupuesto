@@ -7,7 +7,11 @@ import IconoNuevoGasto from './img/nuevo-gasto.svg'
 
 function App() {
   const [gastos, setGastos] = useState([])
-  const [presupuesto, setPresupuesto] = useState(0)
+
+  const [presupuesto, setPresupuesto] = useState(
+    Number(localStorage.getItem('presupuesto')) ?? 0
+  )
+
   const [isValidPresupuesto, setIsValidPresupuesto] = useState(false) /* state para verificar que el presupuesto sea válido. Se inicializa en false, porque al cargar la app el presupuesto es 0, ergo no es válido */
 
   const [modal, setModal] = useState(false) /* Controlará la ventana modal que se debe mostrar al hacer click en el ícono añadir gasto */
@@ -23,6 +27,17 @@ function App() {
       }, 400)
     }
   }, [gastoEditar])
+
+  useEffect(() => {
+    localStorage.setItem('presupuesto', presupuesto ?? 0)
+  }, [presupuesto])
+
+  useEffect(() => {
+    const presupuestoLS = Number(localStorage.getItem('presupuesto')) ?? 0 /* Buscará un presupuesto en local storage, si lo consigue, asigna ese, de no conseguirlo, le asigna 0 */
+    if(presupuestoLS > 0 ) {
+      setIsValidPresupuesto(true) /* Con el propósito de que si hay un presupuesto guardado en el LS no aparezca la pantalla de asignar presupuesto */
+    }
+  }, [])
 
 
   const handleNuevoGasto = () => {
