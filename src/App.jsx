@@ -16,25 +16,26 @@ function App() {
   const [gastoEditar, setGastoEditar] = useState({})
 
   useEffect(() => {
-    if(Object.keys(gastoEditar).length > 0) { /* Si hay algo en editar gasto abre la ventana modal con el formulario */
-      handleNuevoGasto()
+    if (Object.keys(gastoEditar).length > 0) { /* Si hay algo en editar gasto abre la ventana modal con el formulario */
+      setModal(true)
+      setTimeout(() => {
+        setAnimarModal(true)
+      }, 400)
     }
   }, [gastoEditar])
 
 
   const handleNuevoGasto = () => {
     setModal(true)
+    setGastoEditar({}) /* Para que al clickear el boton nuevo gasto, el formulario salga vacío, de ese modo sólo al editar aparece lleno, con los datos del gasto en cuestión. */
 
     setTimeout(() => { /* Gracias a los estilos de transicion que hay en el index.css y las clases que apliquemos, aparecera una animación que mostrará el formulario en la ventana modal */
       setAnimarModal(true) /* Pasado el tiempo indicado, cambia el valor de setAnimarModal a true */
     }, 400)
-
-
-
   }
 
   const guardarGasto = gasto => { /* Esta función manejará los gastos */
-    
+
     gasto.fecha = Date.now()
     gasto.id = generarId()
     setGastos([...gastos, gasto]) /* Hacemos una copia del arreglo gastos y le añadimos el nuevo gasto, que es el objeto que viene de <Modal/> */
@@ -79,6 +80,7 @@ function App() {
         animarModal={animarModal}
         setAnimarModal={setAnimarModal}
         guardarGasto={guardarGasto}
+        gastoEditar={gastoEditar}
       />}
 
     </div>
