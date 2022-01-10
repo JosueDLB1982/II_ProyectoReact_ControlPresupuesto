@@ -35,11 +35,14 @@ function App() {
   }
 
   const guardarGasto = gasto => { /* Esta función manejará los gastos */
-
-    gasto.fecha = Date.now()
-    gasto.id = generarId()
-    setGastos([...gastos, gasto]) /* Hacemos una copia del arreglo gastos y le añadimos el nuevo gasto, que es el objeto que viene de <Modal/> */
-
+    if(gasto.id) {
+      const gastoActualizado = gastos.map(gastoState => gastoState.id === gasto.id ? gasto : gastoState) /* Si los id son iguales es una edicion y retorna gasto que es el objeto actualizado, caso contrario es un registro nuevo, retorna gastoState que es la informacion del state */
+      setGastos(gastoActualizado)
+    } else {
+      gasto.fecha = Date.now()
+      gasto.id = generarId()
+      setGastos([...gastos, gasto]) /* Hacemos una copia del arreglo gastos y le añadimos el nuevo gasto, que es el objeto que viene de <Modal/> */
+    }
     setAnimarModal(false)
     setTimeout(() => {
       setModal(false)

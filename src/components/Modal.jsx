@@ -8,12 +8,16 @@ const Modal = ({ setModal, animarModal, setAnimarModal, guardarGasto, gastoEdita
     const [nombre, setNombre] = useState('')
     const [cantidad, setCantidad] = useState(0)
     const [categoria, setCategoria] = useState('')
+    const [fecha, setFecha] = useState('') /* Para poder añadir fecha a las ediciones de registros de gastos */
+    const [id, setId] = useState('') /* Para efectos de identificar las ediciones de registros */
 
     useEffect(() => {
         if(Object.keys(gastoEditar).length > 0) {
             setNombre(gastoEditar.nombre)
             setCantidad(gastoEditar.cantidad)
             setCategoria(gastoEditar.categoria)
+            setId(gastoEditar.id)
+            setFecha(gastoEditar.fecha)
         }
     }, [])
 
@@ -27,14 +31,14 @@ const Modal = ({ setModal, animarModal, setAnimarModal, guardarGasto, gastoEdita
         e.preventDefault()
 
         if ([nombre, cantidad, categoria].includes('')) {
-            setMensajeValidacion('Todos los Campos son Requeridos') /* Vanmos a reutilizar el componente <Mensaje/> */
+            setMensajeValidacion('Todos los Campos son Requeridos') /* Vamos a reutilizar el componente <Mensaje/> */
 
             setTimeout(() => {
                 setMensajeValidacion('')
             }, 2000)
             return
         }
-        guardarGasto({ nombre, cantidad, categoria }) /* Aquí se generará el objeto con las propiedades o keys de cada gasto */
+        guardarGasto({ nombre, cantidad, categoria, id, fecha }) /* Aquí se generará el objeto con las propiedades o keys de cada gasto */
     }
 
     return (
@@ -49,7 +53,7 @@ const Modal = ({ setModal, animarModal, setAnimarModal, guardarGasto, gastoEdita
             <form
                 onSubmit={handleSubmit}
                 className={`formulario ${animarModal ? 'animar' : 'cerrar'}`}>
-                <legend>Nuevo Gasto</legend>
+                <legend>{gastoEditar.nombre ? 'Editar Gasto' : 'Nuevo Gasto'}</legend>
                 {mensajeValidacion && <Mensaje tipo='error'>{mensajeValidacion}</Mensaje>} {/* Si mensaje tiene contenido, se cargará <Mensaje/> Mostrará el mensaje que estamos seteando en la línea 22 */}
                 <div className='campo'>
                     <label htmlFor="nombre">Nombre Gasto</label>
@@ -93,7 +97,7 @@ const Modal = ({ setModal, animarModal, setAnimarModal, guardarGasto, gastoEdita
 
                 <input
                     type="submit"
-                    value="Añadir Gasto"
+                    value={gastoEditar.nombre ? 'Guardar Cambios' : 'Añadir Gasto'}
                 />
             </form>
         </div>
