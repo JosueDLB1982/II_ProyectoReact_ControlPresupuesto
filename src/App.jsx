@@ -49,6 +49,12 @@ function App() {
     }, 400)
   }
 
+  const eliminarGasto = id => {
+    const gastosActualizados = gastos.filter(gasto => gasto.id !== id)
+    setGastos(gastosActualizados)
+  }
+
+
   return (
     <div className={modal ? 'fijar' : ''}> {/* Esto es con el proposito de que si hay scroll por muchos gastos, y voy a añadir otro, aparexca la ventana modal sobre todo. Si modal esta activa, aplica la clase fijar */}
       <Header
@@ -65,6 +71,7 @@ function App() {
             <ListadoGastos
               gastos={gastos}
               setGastoEditar={setGastoEditar}
+              eliminarGasto={eliminarGasto}
             />
           </main>
 
