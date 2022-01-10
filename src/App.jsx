@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Header from './components/Header'
 import ListadoGastos from './components/ListadoGastos'
 import Modal from './components/Modal'
@@ -12,6 +12,14 @@ function App() {
 
   const [modal, setModal] = useState(false) /* Controlará la ventana modal que se debe mostrar al hacer click en el ícono añadir gasto */
   const [animarModal, setAnimarModal] = useState(false)
+
+  const [gastoEditar, setGastoEditar] = useState({})
+
+  useEffect(() => {
+    if(Object.keys(gastoEditar).length > 0) { /* Si hay algo en editar gasto abre la ventana modal con el formulario */
+      handleNuevoGasto()
+    }
+  }, [gastoEditar])
 
 
   const handleNuevoGasto = () => {
@@ -52,6 +60,7 @@ function App() {
           <main>
             <ListadoGastos
               gastos={gastos}
+              setGastoEditar={setGastoEditar}
             />
           </main>
 
