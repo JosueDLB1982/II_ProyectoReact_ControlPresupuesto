@@ -59,7 +59,7 @@ header h1 {
 header h3 {
     padding: 1rem 0;
     margin: 3;
-    color: #969393;
+    color: greenyellow;
     text-align: center;
 
     /* text-transform: uppercase; */
@@ -216,7 +216,7 @@ header h3 {
 }
 .contenido-presupuesto p.negativo,
 .contenido-presupuesto p.negativo span {
-    color: red;
+    color: #DC2626;
 }
 .contenido-presupuesto span {
     font-weight: 900;

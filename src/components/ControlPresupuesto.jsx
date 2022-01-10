@@ -32,9 +32,9 @@ const ControlPresupuesto = ({ gastos, presupuesto }) => {
             <div>
                 <CircularProgressbar
                     styles={buildStyles({
-                        pathColor: '#3b82f6',
-                        trailColor: '#f5f5f5',
-                        textColor: '#3b82f6',
+                        pathColor: porcentaje > 100 ? '#dc2626' : '#3b82f6', /* Si el porcentaje de gastado supera el 100% el color de la gráfica */
+                        trailColor: '#f5f5f5',                                 /* cambia a rojo */
+                        textColor: porcentaje > 100 ? '#dc2626' : '#3b82f6'  /* De igual modo el texto de la gráfica */
                     })}
                     value={porcentaje}
                     text={`${porcentaje}% Gastado`}
@@ -46,7 +46,7 @@ const ControlPresupuesto = ({ gastos, presupuesto }) => {
                     <span>Presupuesto: </span>{formatearCantidad(presupuesto)}
                 </p>
 
-                <p>
+                <p className={`${disponible < 0 ? 'negativo' : ''}`}> {/* Si se agota el presupuesto, el disponible cambia a color rojo mediante la aplicación de la clase negativo */}
                     <span>Disponible: </span>{formatearCantidad(disponible)} {/* controlado por el state disponible, muestra el dinero del presupuesto*/}
                 </p>
 
