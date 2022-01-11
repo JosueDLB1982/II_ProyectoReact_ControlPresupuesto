@@ -44,7 +44,7 @@ function App() {
   }, [gastos]) /* hay que convertir el arreglo a string con JSON.stringify. Si no hay nada le asignamos un arreglo vacío */
 
   useEffect(() => { /* state dependiente de Filtro, sabrá cuál es la categoría seleccionada */
-    if(filtro) {
+    if (filtro) {
       const gastosFiltrados = gastos.filter(gasto => gasto.categoria === filtro)
       setGastosFiltrados(gastosFiltrados)
     }
@@ -52,7 +52,7 @@ function App() {
 
   useEffect(() => {
     const presupuestoLS = Number(localStorage.getItem('presupuesto')) ?? 0 /* Buscará un presupuesto en local storage, si lo consigue, asigna ese, de no conseguirlo, le asigna 0 */
-    if(presupuestoLS > 0 ) {
+    if (presupuestoLS > 0) {
       setIsValidPresupuesto(true) /* Con el propósito de que si hay un presupuesto guardado en el LS no aparezca la pantalla de asignar presupuesto */
     }
   }, [])
@@ -68,7 +68,7 @@ function App() {
   }
 
   const guardarGasto = gasto => { /* Esta función manejará los gastos */
-    if(gasto.id) {
+    if (gasto.id) {
       const gastoActualizado = gastos.map(gastoState => gastoState.id === gasto.id ? gasto : gastoState) /* Si los id son iguales es una edicion y retorna gasto que es el objeto actualizado, caso contrario es un registro nuevo, retorna gastoState que es la informacion del state */
       setGastos(gastoActualizado)
       setGastoEditar({}) /* Luego de editar un gasto devuelve el state a vacío */
@@ -93,6 +93,7 @@ function App() {
     <div className={modal ? 'fijar' : ''}> {/* Esto es con el proposito de que si hay scroll por muchos gastos, y voy a añadir otro, aparexca la ventana modal sobre todo. Si modal esta activa, aplica la clase fijar */}
       <Header
         gastos={gastos}
+        setGastos={setGastos}
         presupuesto={presupuesto}
         setPresupuesto={setPresupuesto}
         isValidPresupuesto={isValidPresupuesto}

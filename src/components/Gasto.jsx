@@ -31,24 +31,24 @@ const Gasto = ({ gasto, setGastoEditar, eliminarGasto }) => {
 
     const leadingActions = () => ( /* Deslizar hacia adelante */
         <LeadingActions>
-            <SwipeAction onClick={() => setGastoEditar(gasto) }>
+            <SwipeAction onClick={() => setGastoEditar(gasto)}>
                 Editar
             </SwipeAction>
         </LeadingActions>
-        )
-   
+    )
+
     const trailingActions = () => ( /* Deslizar hacia atras */
         <TrailingActions>
             <SwipeAction
-            onClick={() => eliminarGasto(id)}
-            destructive={true} /* prop de transicion de la librería SwipeAction que da una transición agradable */
+                onClick={() => eliminarGasto(id)}
+                destructive={true} /* prop de transicion de la librería SwipeAction que da una transición agradable */
             >
                 Eliminar
             </SwipeAction>
         </TrailingActions>
-        )
-    
-        return (
+    )
+
+    return (
         <SwipeableList>
             <SwipeableListItem
                 leadingActions={leadingActions()}

@@ -12,7 +12,7 @@ const Modal = ({ setModal, animarModal, setAnimarModal, guardarGasto, gastoEdita
     const [id, setId] = useState('') /* Para efectos de identificar las ediciones de registros */
 
     useEffect(() => {
-        if(Object.keys(gastoEditar).length > 0) {
+        if (Object.keys(gastoEditar).length > 0) {
             setNombre(gastoEditar.nombre)
             setCantidad(gastoEditar.cantidad)
             setCategoria(gastoEditar.categoria)
