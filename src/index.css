@@ -64,10 +64,19 @@ header h3 {
 }
 
 .formulario {
-    width: 95%;
+    width: 85%;
     margin: 0 auto;
-    padding: 10rem 0;
+    padding: 8rem 0;
 }
+
+@media (min-width: 720px) {
+    .formulario {
+        width: 95%;
+        margin: 0 auto;
+        padding: 10rem 0;
+}
+}
+
 @media (min-width: 768px) {
     .formulario {
         padding: 5rem 0;
