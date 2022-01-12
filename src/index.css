@@ -32,7 +32,7 @@ h1 {
     margin: 1rem;
 }
 
-@media (min-width: 360px) {
+@media screen and (min-width: 360px) {
     h1 {
         font-size: 4rem;
     }
@@ -64,7 +64,7 @@ header h1 {
     text-transform: uppercase;
 }
 
-@media (min-width: 360px) {
+@media screen and (min-width: 360px) {
     header h1 {
         padding: 3rem 0;
         margin: 0;
@@ -87,7 +87,7 @@ header h3 {
     margin: 0 auto;
     padding: 10rem 0;
 }
-@media (min-width: 768px) {
+@media screen and (min-width: 768px) {
     .formulario {
         padding: 5rem 0;
         width: 60rem;
@@ -105,7 +105,7 @@ header h3 {
     border-bottom: 1px solid var(--azul);  /* FUNCIONA PARA EL TITULO DE LA MODAL */
 }
 
-@media (min-width: 360px) {
+@media screen and (min-width: 360px) {
     .formulario legend {
         font-size: 3.6rem;
         text-align: center;
@@ -123,7 +123,7 @@ header h3 {
     margin-bottom: 1rem;
 }
 
-@media (min-width: 360px) {
+@media screen and (min-width: 360px) {
     .formulario .campo {
         display: grid;
         margin-bottom: 2rem;
@@ -137,7 +137,7 @@ header h3 {
     margin-bottom: 1rem;
 }                                   /* Funciona para los nombres de los campos */
 
-@media (min-width: 360px) {
+@media screen and (min-width: 360px) {
     .formulario label {
         color: var(--azul);
         font-size: 2.8rem;
@@ -170,14 +170,14 @@ header h3 {
     transition: background-color 300ms ease;
 }
 
-@media (min-width: 768px) {
+@media screen and (min-width: 768px) {
     .formulario input[type="submit"] {
         display: block;
         padding: 1rem 5rem;
     }
 }                                           /* FUNCIONA PARA EL SUBMIT */
 
-@media (min-width: 360px) {
+@media screen and (min-width: 360px) {
     .formulario input[type="submit"] {
         background-color: #1048a4;
         border: none;
@@ -203,7 +203,7 @@ header h3 {
     border-radius: 1rem;
 }                                   /* FUNCIONA PARA EL SELECT */
 
-@media (min-width: 360px) {
+@media screen and (min-width: 360px) {
     .formulario select {
         font-size: 100%;
         flex: 1;
@@ -252,7 +252,7 @@ header h3 {
 .dos-columnas :first-child {
     margin-bottom: 4rem;
 }
-@media (min-width: 768px) {
+@media screen and (min-width: 768px) {
     .dos-columnas {
         flex-direction: row;
         align-items: center;
@@ -272,7 +272,7 @@ header h3 {
     text-align: center;
 }
 
-@media (min-width: 360px) {
+@media screen and (min-width: 360px) {
     .formulario input[type="text"].nuevo-presupuesto, 
     .formulario input[type="number"].nuevo-presupuesto {
     font-size: 2.8rem;
@@ -284,7 +284,7 @@ header h3 {
     width: 15rem;
 }
 
-@media (min-width:360px) {
+@media screen and (min-width:360px) {
     .contenedor-presupuesto svg {
         width: 25rem;
     }
@@ -302,13 +302,13 @@ header h3 {
     font-size: 2rem;
 }
 
-@media (min-width: 768px) {
+@media screen and (min-width: 768px) {
     .contenido-presupuesto p {
         text-align: left;
     }
 }
 
-@media (min-width:360px) {
+@media screen and (min-width:360px) {
     .contenido-presupuesto p {
         font-weight: 400;
         color: var(--gris-oscuro);
@@ -341,7 +341,7 @@ header h3 {
     font-size: 75%;
 }
 
-@media (min-width: 360px) {
+@media screen and (min-width: 360px) {
     .reset-app {
         border: none;
         background-color: #db2777;
@@ -378,7 +378,7 @@ main {
     color: var(--gris-oscuro);
 }
 
-@media (min-width: 360px) {
+@media screen and (min-width: 360px) {
     .filtros label {
         font-size: 3rem;
         font-weight: 900;
@@ -405,7 +405,7 @@ main {
     font-size: 2rem;
 }
 
-@media(min-width:360px) {
+@media screen and (min-width:360px) {
     .listado-gastos h2 {
         color: var(--gris-oscuro);
         font-weight: 900;
@@ -433,7 +433,7 @@ main {
     font-weight: 900;
 }
 
-@media (min-width: 360px) {
+@media screen and (min-width: 360px) {
     .cantidad-gasto {
         font-size: 2.4rem;
         color: var(--negro);
@@ -451,7 +451,7 @@ main {
     width: 5rem;
 }
 
-@media (min-width: 360px) {
+@media screen and (min-width: 360px) {
     .contenido-gasto img {
         width: 10rem;
     }
@@ -468,7 +468,7 @@ main {
     text-transform: uppercase;
 }
 
-@media (min-width: 360px) {
+@media screen and (min-width: 360px) {
     .descripcion-gasto .categoria {
         color: var(--gris);
         font-size: 1.6rem;
@@ -487,7 +487,7 @@ main {
     font-weight: 700;
 }
 
-@media (min-width:360px) {
+@media screen and (min-width:360px) {
     .descripcion-gasto .nombre-gasto {
         color: var(--gris-oscuro);
         font-size: 2.4rem;
@@ -505,7 +505,7 @@ main {
     color: var(--gris-oscuro);
 }
 
-@media (min-width: 360px) {
+@media screen and (min-width: 360px) {
     .descripcion-gasto .fecha-gasto {
         font-size: 1.8rem;
         font-weight: 900;
@@ -558,7 +558,7 @@ main {
     opacity: 0;
 }                                               /* FUNCIONA PARA EL ANCHO DE LA MODAL */
 
-@media (min-width: 360px) {
+@media screen and (min-width: 360px) {
     .modal .formulario {
         max-width: 80rem;
         width: 40rem;
