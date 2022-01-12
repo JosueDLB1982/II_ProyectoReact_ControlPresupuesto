@@ -268,7 +268,7 @@ header h3 {
 
 .formulario input[type="text"].nuevo-presupuesto, 
 .formulario input[type="number"].nuevo-presupuesto {
-    /* 360px */
+    font-size: 2rem;
     text-align: center;
 }
 
