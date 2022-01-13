@@ -76,14 +76,6 @@ header h3 {
   }
 }
 
-@media (min-width: 725px) {
-    .formulario {
-      width: 95%;
-      margin: 0 auto;
-      padding: 7rem 0;
-    }
-  }
-
 .formulario legend {
   font-size: 3.6rem;
   text-align: center;
