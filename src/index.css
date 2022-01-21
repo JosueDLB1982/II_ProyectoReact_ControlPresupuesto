@@ -56,7 +56,7 @@ header h1 {
   text-transform: uppercase;
 }
 
-header h3 a{
+header h3 {
   padding: 1rem 0;
   margin: 3;
   color: greenyellow;
