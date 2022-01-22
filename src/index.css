@@ -57,7 +57,7 @@ header h1 {
 }
 
  a {
-  display:block;
+  display:flex;
   padding: 1rem 0;
   margin: 3;
   color: greenyellow;
