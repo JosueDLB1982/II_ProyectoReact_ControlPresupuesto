@@ -57,12 +57,17 @@ header h1 {
 }
 
  a {
-  display:flex;
+  display:block;
   padding: 1rem 0;
   margin: 3;
   color: greenyellow;
   text-align: center;
 }
+
+a:hover {
+  color: #042a67
+}
+
 
 .formulario {
   width: 80%;
